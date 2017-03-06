@@ -24,6 +24,21 @@
 //  and send result to POST /repos/import
 //
 // $('.repo-fetcher')...
+var text = $('input').val();
+$('.repo-fetcher').on('submit', function() {
+  $.ajax({
+    type: 'GET',
+    url: 'https://api.github.com/users/' + text + '/repos',
+    success: (response) => {
+      alert(response)
+    },
+    error: (err) => {
+      alert(JSON.stringify(err));
+    }
+  })
+
+
+});
 
 </script>
 </body>
