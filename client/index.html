@@ -26,6 +26,8 @@
 //
 // $('.repo-fetcher')...
 $(document).ready(function(event) {
+  $('.top-repos').append('<th>Owner</th><th>Repository</th><th>Stargazers</th>')
+
   $.ajax({
     url: '/repos',
     type: 'GET',
@@ -46,7 +48,7 @@ $(document).ready(function(event) {
 
   $('.repo-fetcher').on('submit',(event) => {
     var text = $('input:text').val();
-    event.preventDefault();
+    event.preventDefault();    
     $.ajax({
       type: 'GET',
       contentType: 'applicaion/json',

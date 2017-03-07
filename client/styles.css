@@ -7,19 +7,15 @@ tr:nth-child(odd) {
 }
 
 body {
-  background-color: rgb(97, 135, 200)
+  background-color: rgb(189, 196, 212)
 }
 
 .top-repos {
-  display: block;
+  width: 80%;
 }
 
-table, tr, td {
-  width: 60%;
+tr, td {
+  width: 33%;
   border: 1px solid black;
   align-content: center;
-}
-
-th {
-  height: 100%;
 }
