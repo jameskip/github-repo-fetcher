@@ -29,10 +29,12 @@ $('.repo-fetcher').submit(function(e) {
   e.preventDefault();
   $.ajax({
     type: 'GET',
-    contentType: 'application/json',
+    contentType: 'text',
     url: 'https://api.github.com/users/' + text + '/repos',
-    success: (data) => {
-      console.log(data)
+    success: (response) => {
+      $.post('repos/import', function(data, status) {
+        console.log(data)
+      })
     },
     error: (err) => {
       console.error(err);

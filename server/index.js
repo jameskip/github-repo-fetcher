@@ -19,7 +19,7 @@ var knex = require('knex')({
 
 app.post('/repos/import', function (req, res) {
   // TODO
-
+  console.dir(JSON.parse(req.body))
   console.log('hey i\'m trying to post here')
 });
 
