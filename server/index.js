@@ -6,6 +6,8 @@ var $ = require('jquery');
 var app = express();
 module.exports = app;
 
+app.use(express.static('client'))
+
 app.use( bodyParser.json() );
 
 
@@ -17,15 +19,29 @@ var knex = require('knex')({
 });
 
 
-app.post('/repos/import', function (req, res) {
-  // TODO
-  console.dir(JSON.parse(req.body))
-  console.log('hey i\'m trying to post here')
+app.post('/repos/import', function (req, res, next) {
+  // TODO: If repo already exists update star count: NO DUPLICATES
+  req.body.forEach((current) => {
+    var insert = {id: current.id, username: current.owner.login, reponame: current.name, stargazers: current.stargazers_count, ownerLink: current.owner.html_url, link: current.html_url}
+
+    knex('repos').insert(insert)
+    .then(function (req, res) {
+      res.send(200);
+    })
+    .catch(function(err) {
+      console.error(JSON.stringify(err));
+    })
+
+  })
 });
 
 
 app.get('/repos', function (req, res) {
-  // TODO
+  // TODO: knex to get top 25 repos by stars: checkout orderBy and limit
+  knex('repos').orderBy('stargazers', 'desc').limit(25)
+  .then(function(insert) {
+    res.send(JSON.stringify(insert));
+  })
 });
 
 

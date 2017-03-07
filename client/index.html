@@ -1,5 +1,6 @@
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
   <title>GitHub Fetcher</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
   <button type="submit">Fetch User's Repos</button>
 </form>
 
-<table class="top-repos"></table>
+<table class="top-repos" rules="rows"></table>
 
 <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
 <script>
@@ -24,21 +25,50 @@
 //  and send result to POST /repos/import
 //
 // $('.repo-fetcher')...
-$('.repo-fetcher').submit(function(e) {
-  var text = $('input:text').val();
-  e.preventDefault();
+$(document).ready(function(event) {
   $.ajax({
+    url: '/repos',
     type: 'GET',
-    contentType: 'text',
-    url: 'https://api.github.com/users/' + text + '/repos',
-    success: (response) => {
-      $.post('repos/import', function(data, status) {
-        console.log(data)
-      })
-    },
-    error: (err) => {
-      console.error(err);
-    }
+    contentType: 'application/json',
+    dataType: 'json'
+  })
+  .success(function(data) {
+    data.forEach(function(current) {
+      var name = current.reponame;
+      var owner = current.username;
+      var stars = current.stargazers;
+      var link = current.link;
+      var ownerLink = current.ownerLink;
+
+      $('.top-repos').append('<tr class="top"><th>' + '<a href="'+ownerLink+'">' + owner + '</a></th><td>' + '<a href="'+link+'">' + name + '</a></td><td>' + stars + '</td></tr>');
+    })
+  })
+
+  $('.repo-fetcher').on('submit',(event) => {
+    var text = $('input:text').val();
+    event.preventDefault();
+    $.ajax({
+      type: 'GET',
+      contentType: 'applicaion/json',
+      url: 'https://api.github.com/users/' + text + '/repos?oauth_token=b3e628c7d9e2bf9af5bbfe4b88d507862b1f4e82&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1488842284&oauth_nonce=ov6GkS&oauth_version=1.0&oauth_signature=c1CtDdHrc5uMxotd1qr0T0Ns3Tg=',
+      success: (response) => {
+        $.ajax({
+          type: 'POST',
+          url: 'repos/import',
+          data: JSON.stringify(response),
+          contentType: 'application/json',
+          success: function (request, response) {
+            //console.log(response);
+          },
+          error: function(err) {
+            console.error(err);
+          }
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
   })
 
 

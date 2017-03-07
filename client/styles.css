@@ -1,0 +1,25 @@
+tr:nth-child(even) {
+    background-color: #CCC;
+}
+
+tr:nth-child(odd) {
+  background-color: #FFF;
+}
+
+body {
+  background-color: rgb(97, 135, 200)
+}
+
+.top-repos {
+  display: block;
+}
+
+table, tr, td {
+  width: 60%;
+  border: 1px solid black;
+  align-content: center;
+}
+
+th {
+  height: 100%;
+}
