@@ -27,7 +27,6 @@ app.post('/repos/import', function (req, res, next) {
     knex('repos').insert(insert)
     .then(function (req, res) {
       res.send(200);
-
     })
     .catch(function(err) {
       console.error(JSON.stringify(err));

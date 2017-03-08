@@ -55,24 +55,29 @@ $(document).ready(function(event) {
       contentType: 'applicaion/json',
       url: 'https://api.github.com/users/' + text + '/repos?oauth_token=b3e628c7d9e2bf9af5bbfe4b88d507862b1f4e82&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1488842284&oauth_nonce=ov6GkS&oauth_version=1.0&oauth_signature=c1CtDdHrc5uMxotd1qr0T0Ns3Tg=',
       success: (response) => {
+        console.log(response)
         $.ajax({
           type: 'POST',
           url: 'repos/import',
           data: JSON.stringify(response),
           contentType: 'application/json',
-          success: function (request, response) {
-            //console.log(response);
-          },
-          error: function(err) {
-            console.error(err);
-          }
+          // success: function (request, response) {
+          //
+          // },
+          // error: function(err) {
+          //   console.error(err);
+          // }
         });
+        //location.reload();
+        $( ".top-repos" ).load( "/repos" );
       },
       error: (err) => {
         console.error(err);
+        alert(err.statusText)
       }
     })
   })
+
 
 
 });

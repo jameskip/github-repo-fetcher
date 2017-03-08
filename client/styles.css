@@ -6,13 +6,20 @@ tr:nth-child(odd) {
   background-color: #FFF;
 }
 
-h2, h3 {
+h2, h3{
+  padding: 10px 10px 0 0;
   font-family: "Helvetica";
   font-weight: lighter;
 }
 
+h2 {
+  padding-left: 10px;
+}
+
 .repo-fetcher {
-  align-self: center;
+  padding: 0 0 0 10px;
+  font-family: "Helvetica";
+  font-weight: lighter;
 }
 
 .top-repos {
