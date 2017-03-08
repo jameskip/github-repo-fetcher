@@ -27,7 +27,7 @@
 //
 // $('.repo-fetcher')...
 $(document).ready(function(event) {
-  $('.top-repos').append('<th>Owner</th><th>Repository</th><th>Stargazers</th>')
+  $('.top-repos').append('<th>Owner</th><th>Repository</th><th>Stargazers</th>').hide().fadeIn();
 
   $.ajax({
     url: '/repos',
@@ -43,7 +43,7 @@ $(document).ready(function(event) {
       var link = current.link;
       var ownerLink = current.ownerLink;
 
-      $('.top-repos').append('<tr class="top"><th>' + '<a href="'+ownerLink+'">' + owner + '</a></th><td>' + '<a href="'+link+'">' + name + '</a></td><td>' + stars + '</td></tr>');
+      $('.top-repos').append('<tr class="top"><th>' + '<a href="'+ownerLink+'">' + owner + '</a></th><td>' + '<a href="'+link+'">' + name + '</a></td><td>' + stars + '</td></tr>').hide().fadeIn('500');
     })
   })
 
@@ -55,7 +55,6 @@ $(document).ready(function(event) {
       contentType: 'applicaion/json',
       url: 'https://api.github.com/users/' + text + '/repos?oauth_token=b3e628c7d9e2bf9af5bbfe4b88d507862b1f4e82&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1488842284&oauth_nonce=ov6GkS&oauth_version=1.0&oauth_signature=c1CtDdHrc5uMxotd1qr0T0Ns3Tg=',
       success: (response) => {
-        console.log(response)
         $.ajax({
           type: 'POST',
           url: 'repos/import',
@@ -68,8 +67,7 @@ $(document).ready(function(event) {
           //   console.error(err);
           // }
         });
-        //location.reload();
-        $( ".top-repos" ).load( "/repos" );
+        location.reload();
       },
       error: (err) => {
         console.error(err);
