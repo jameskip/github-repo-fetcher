@@ -37,4 +37,14 @@ tr, td, th {
   border: 1px solid black;
   align-content: center;
   font-weight: lighter;
+  padding: 2px 0px 2px 20px;
+}
+
+a {
+  color: rgb(35, 46, 57);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(147, 44, 44);
 }

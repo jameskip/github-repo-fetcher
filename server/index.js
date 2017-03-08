@@ -6,7 +6,7 @@ var $ = require('jquery');
 var app = express();
 module.exports = app;
 
-app.use(express.static('client'))
+app.use(express.static('client'));
 
 app.use( bodyParser.json() );
 
