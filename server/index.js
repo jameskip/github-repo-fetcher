@@ -30,7 +30,6 @@ app.post('/repos/import', function (req, res, next) {
     })
     .catch(function(err) {
       console.error(err);
-      alert(err.statusText)
     })
 
   })
