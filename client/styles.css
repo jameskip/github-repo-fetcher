@@ -1,21 +1,33 @@
 tr:nth-child(even) {
-    background-color: #CCC;
+    background-color: rgba(230, 230, 230, 0.74);
 }
 
 tr:nth-child(odd) {
   background-color: #FFF;
 }
 
-body {
-  background-color: rgb(189, 196, 212)
+h2, h3 {
+  font-family: "Helvetica";
+  font-weight: lighter;
+}
+
+.repo-fetcher {
+  align-self: center;
 }
 
 .top-repos {
+  background-color: rgba(230, 230, 230, 0.74);
+  font-family: "Helvetica";
+  line-height: 150%;
+  font-weight: lighter;
+  font-size: 90%;
   width: 80%;
+  background-color: #FFF;
 }
 
-tr, td {
+tr, td, th {
   width: 33%;
   border: 1px solid black;
   align-content: center;
+  font-weight: lighter;
 }

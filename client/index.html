@@ -13,6 +13,7 @@
   <button type="submit">Fetch User's Repos</button>
 </form>
 
+
 <table class="top-repos" rules="rows"></table>
 
 <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
@@ -48,7 +49,7 @@ $(document).ready(function(event) {
 
   $('.repo-fetcher').on('submit',(event) => {
     var text = $('input:text').val();
-    event.preventDefault();    
+    event.preventDefault();
     $.ajax({
       type: 'GET',
       contentType: 'applicaion/json',
