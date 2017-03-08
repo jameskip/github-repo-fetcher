@@ -6,6 +6,11 @@ tr:nth-child(odd) {
   background-color: #FFF;
 }
 
+h2 img {
+  height: 20px;
+  width: auto;
+}
+
 h2, h3{
   padding: 10px 10px 0 0;
   font-family: "Helvetica";

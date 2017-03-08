@@ -20,9 +20,15 @@ var knex = require('knex')({
 
 
 app.post('/repos/import', function (req, res, next) {
-  // TODO: If repo already exists update star count: NO DUPLICATES
   req.body.forEach((current) => {
-    var insert = {id: current.id, username: current.owner.login, reponame: current.name, stargazers: current.stargazers_count, ownerLink: current.owner.html_url, link: current.html_url}
+    var insert = {
+      id: current.id,
+      username: current.owner.login,
+      reponame: current.name,
+      stargazers: current.stargazers_count,
+      ownerLink: current.owner.html_url,
+      link: current.html_url
+    };
 
     knex('repos').insert(insert)
     .then(function (req, res) {
@@ -36,7 +42,6 @@ app.post('/repos/import', function (req, res, next) {
 
 
 app.get('/repos', function (req, res) {
-  // TODO: knex to get top 25 repos by stars: checkout orderBy and limit
   knex('repos').orderBy('stargazers', 'desc').limit(25)
   .then(function(insert) {
     res.send(JSON.stringify(insert));
