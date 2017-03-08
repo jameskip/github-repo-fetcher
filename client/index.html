@@ -70,12 +70,13 @@ $(document).ready(function() {
           type: 'POST',
           url: 'repos/import',
           data: JSON.stringify(response),
-          contentType: 'application/json'
+          contentType: 'application/json',
         });
         location.reload();
       },
 
       error: (err) => {
+        alert(err.statusText);
         console.error(err);
       }
     })
