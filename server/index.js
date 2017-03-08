@@ -29,7 +29,8 @@ app.post('/repos/import', function (req, res, next) {
       res.send(200);
     })
     .catch(function(err) {
-      console.error(JSON.stringify(err));
+      console.error(err);
+      alert(err.statusText)
     })
 
   })
@@ -41,6 +42,9 @@ app.get('/repos', function (req, res) {
   knex('repos').orderBy('stargazers', 'desc').limit(25)
   .then(function(insert) {
     res.send(JSON.stringify(insert));
+  })
+  .catch(function(error) {
+    console.error(error);
   })
 });
 

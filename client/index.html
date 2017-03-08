@@ -12,7 +12,7 @@
 
   <button type="submit">Fetch User's Repos</button>
 </form>
-
+<hr>
 
 <table class="top-repos" rules="rows"></table>
 <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
@@ -70,14 +70,13 @@ $(document).ready(function() {
           type: 'POST',
           url: 'repos/import',
           data: JSON.stringify(response),
-          contentType: 'application/json',
+          contentType: 'application/json'
         });
         location.reload();
       },
 
       error: (err) => {
         console.error(err);
-        alert(err.statusText)
       }
     })
   })
