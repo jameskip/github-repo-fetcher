@@ -32,6 +32,10 @@ h2 {
   background-color: #FFF;
 }
 
+.clear_repos {
+  margin: 0 0 5px 10px;
+}
+
 tr, td, th {
   width: 33%;
   border: 1px solid black;

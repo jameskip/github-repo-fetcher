@@ -12,6 +12,7 @@
 
   <button type="submit">Fetch User's Repos</button>
 </form>
+<button class="clear_repos">Clear Repos</button>
 <hr>
 
 <table class="top-repos" rules="rows"></table>
@@ -80,6 +81,11 @@ $(document).ready(function() {
         console.error('Origin: "index.html" Line: 80', err);
       }
     })
+  })
+
+  $('.clear_repos').on('click', function(event) {
+    event.preventDefault();
+    alert('We will finish this tomorrow... Zzz')
   })
 
 });
