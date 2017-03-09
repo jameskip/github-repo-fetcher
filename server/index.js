@@ -63,7 +63,6 @@ app.get('/', function (req, res) {
 app.get('/truncate', function(req, res) {
   knex('repos').truncate()
   .then(function() {
-    location.reload();
   })
 })
 
