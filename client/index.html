@@ -69,6 +69,11 @@ $(document).ready(function() {
           url: 'repos/import',
           data: JSON.stringify(response),
           contentType: 'application/json',
+          error: function(err) {
+            if(err.status === 413) {
+              alert(err.statusText);
+            }
+          }
         });
         location.reload();
       },

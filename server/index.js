@@ -19,7 +19,7 @@ var knex = require('knex')({
 });
 
 
-app.post('/repos/import', function (req, res, next) {
+app.post('/repos/import', function (req, res) {
   req.body.forEach((current) => {
     var insert = {
       id: current.id,
@@ -53,7 +53,7 @@ app.get('/repos', function (req, res) {
 
 
 app.get('/', function (req, res) {
-  res.sendFile('/Users/james/Documents/hratx25-fullstack-exercise/client/index.html')
+  res.sendFile('/Users/james/Documents/github-repo-fetcher/client/index.html')
 });
 
 app.get('/truncate', function(req, res) {
