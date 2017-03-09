@@ -16,9 +16,6 @@ var knex = require('knex')({
   connection: {
     filename: './github-fetcher.sqlite3'
   },
-  migrations: {
-    tableName: 'migrations'
-  }
 });
 
 
