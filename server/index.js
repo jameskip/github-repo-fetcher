@@ -42,7 +42,7 @@ app.post('/repos/import', function (req, res) {
 
 
 app.get('/repos', function (req, res) {
-  knex('repos').orderBy('stargazers', 'desc').limit(25)
+  knex('repos').orderBy('stargazers', 'desc').limit(50)
   .then(function(insert) {
     res.send(JSON.stringify(insert));
   })
