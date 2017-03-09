@@ -1,3 +1,3 @@
 # GitHub Repository Fetcher #
 
-> A simple GitHub repo fetcher.
+<img src="./client/favicon.ico" width="16px" /> >  A simple GitHub repo fetcher.
