@@ -15,6 +15,9 @@ var knex = require('knex')({
   client: 'sqlite3',
   connection: {
     filename: './github-fetcher.sqlite3'
+  },
+  migrations: {
+    tableName: 'migrations'
   }
 });
 
@@ -32,6 +35,7 @@ app.post('/repos/import', function (req, res, next) {
 
     knex('repos').insert(insert)
     .then(function (req, res) {
+      // res.send(200);
     })
     .catch(function(err) {
       console.error(err);
