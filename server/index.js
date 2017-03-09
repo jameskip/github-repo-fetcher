@@ -60,6 +60,13 @@ app.get('/', function (req, res) {
   res.sendFile('/Users/james/Documents/hratx25-fullstack-exercise/client/index.html')
 });
 
+app.get('/truncate', function(req, res) {
+  knex('repos').truncate()
+  .then(function() {
+    location.reload();
+  })
+})
+
 var port = process.env.PORT || 4040;
 app.listen(port);
 console.log("Listening on port " + port);

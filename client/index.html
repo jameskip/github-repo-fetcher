@@ -78,11 +78,15 @@ $(document).ready(function() {
         console.error('Origin: "index.html" Line: 80', err);
       }
     })
-  })
+  });
 
   $('.clear_repos').on('click', function(event) {
     event.preventDefault();
-    alert('We will finish this tomorrow... Zzz')
+    $.ajax({
+      type: 'GET',
+      url: 'truncate'
+    })
+    location.reload();
   })
 
 });
