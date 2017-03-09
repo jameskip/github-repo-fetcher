@@ -77,7 +77,6 @@ $(document).ready(function() {
         });
         location.reload();
       },
-
       error: (err) => {
         alert('User ' + err.statusText);
       }
@@ -88,7 +87,7 @@ $(document).ready(function() {
     event.preventDefault();
     $.ajax({
       type: 'GET',
-      url: 'truncate'
+      url: 'truncate',
     })
     location.reload();
   })
